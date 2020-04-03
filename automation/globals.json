@@ -1,0 +1,4 @@
+module.exports = {
+  disable_test_modules: false,
+};
+
