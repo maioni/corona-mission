@@ -10,7 +10,7 @@
 ```bash
 npm install --save-dev mocha chai nightwatch selenium-server chromedriver geckodriver operadriver iedriver
 ```
-// deprecated, check more infor for manual installation: iedriver firefoxdriver safaridriver 
+// deprecated, check more info for manual installation: firefoxdriver safaridriver 
 
 ## Uninstall dependences (if needed):
 
