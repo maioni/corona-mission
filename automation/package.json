@@ -1,19 +1,20 @@
 {
   "name": "automation",
   "version": "1.0.0",
-  "description": "",
+  "description": "automation tests for corona mission system",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nightwatch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maioni/corona-mission.git"
   },
   "keywords": [
+    "test",
     "automation",
     "e2e",
     "nightwatch",

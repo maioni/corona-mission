@@ -1,27 +1,26 @@
 {
-  "src_folders" : ["tests"],
-  "output_folder" : "./tests/nightwatch-reports",
+  "src_folders": ["tests"],
+  "output_folder": "reports",
   "custom_commands_path": "",
   "custom_assertions_path": "",
-  "page_objects_path": "./tests/pages/",
+  "page_objects_path": "./pages/",
   "globals_path": "globalModules.js",
-  
 
-  "selenium" : {
-    "start_process" : true,
-    "server_path" : "./node_modules/selenium-server/lib/runner/selenium-server-standalone-3.141.59.jar",
-    "log_path" : "./tests/selenium-reports/",
-    "port" : 4444,
-    "cli_args" : {
-      "webdriver.chrome.driver" : "./node_modules/chromedriver/lib/chromedriver/chromedriver"
+  "selenium": {
+    "start_process": true,
+    "server_path": "./node_modules/selenium-server/lib/runner/selenium-server-standalone-3.141.59.jar",
+    "log_path": "./reports/",
+    "port": 4445,
+    "cli_args": {
+      "webdriver.chrome.driver": "./node_modules/chromedriver/lib/chromedriver/chromedriver"
     }
   },
 
-  "test_settings" : {
-    "default" : {
-      "launch_url" : "http://localhost:8100",
-      "selenium_port"  : 4444,
-      "selenium_host"  : "localhost",
+  "test_settings": {
+    "default": {
+      "launch_url": "https://painel.vehicleai.com.br/",
+      "selenium_port": 4445,
+      "selenium_host": "localhost",
       "end_session_on_fail": false,
       "abortOnAssertionFailure": false,
       "globals": {
@@ -30,21 +29,15 @@
       "screenshots": {
         "enabled": true,
         "on_failure": true,
-        "path": "./tests/screenshots/"
+        "path": "screenshots/"
       },
       "desiredCapabilities": {
         "browserName": "chrome",
-        "_comment": "others browser options: firefox, internet explorer, safari, ...",
         "javascriptEnabled": true,
         "acceptSslCerts": true,
         "chromeOptions": {
-          "args": ["--no-sandbox", "--disable-gpu", "--headless"],
-        "firefoxOptions": {
-          "args": ["--no-sandbox", "--disable-gpu", "--headless"],
-        "internet explorer": {
-          "args": ["--no-sandbox", "--disable-gpu", "--headless"],
-        "operaOptions": {
           "args": ["--no-sandbox", "--disable-gpu", "--headless"]
+        }
       }
     }
   }
