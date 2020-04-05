@@ -1,4 +1,4 @@
-# setup test envirement:
+# Setup test envirement at automation folder:
 
 ## requirements:
 
@@ -8,14 +8,16 @@
 ## Install dependences (same could be deprecated, check more info section):
 
 ```bash
-npm install --save-dev mocha chai nightwatch selenium-server chromedriver geckodriver operadriver iedriver
+cd corona-mission/automation
+npm install --save-dev mocha chai nightwatch selenium-server chromedriver geckodriver operadriver iedriver edge
 ```
 // deprecated, check more info for manual installation: firefoxdriver safaridriver 
 
 ## Uninstall dependences (if needed):
 
 ```bash
-npm uninstall --save-dev mocha chai nightwatch selenium-server chromedriver geckodriver operadriver iedriver
+cd corona-mission/automation
+npm uninstall --save-dev mocha chai nightwatch selenium-server chromedriver geckodriver operadriver iedriver edge
 ```
 // deprecated: firefoxdriver safaridriver
 
@@ -53,3 +55,12 @@ drivers for safaridriver iedriverserver and others can be found in the Selenium 
 [InternetExplorerDriver] (https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver)
 [MicrosoftEdgeDriver] (https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)
 [IE WebDriver Tool for Internet Explorer 11] (https://www.microsoft.com/en-us/download/details.aspx?id=44069)
+
+# Running test cases:
+
+## running all test suites:
+
+```bash
+cd corona-mission/automation
+npm test
+```

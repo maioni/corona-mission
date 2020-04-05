@@ -1,11 +1,8 @@
 {
   "name": "automation",
   "version": "1.0.0",
-  "description": "automation tests for corona mission system",
+  "description": "e2e automation project for corona mission",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "test": "nightwatch"
   },
@@ -17,21 +14,21 @@
     "test",
     "automation",
     "e2e",
+    "selenium",
     "nightwatch",
     "mocha",
-    "chai",
-    "selenium"
+    "chai"
   ],
   "author": "daniel maioni",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/maioni/corona-mission/issues"
   },
-  "homepage": "https://github.com/maioni/corona-mission/blob/tests/automation/AUTOMATION.md",
+  "homepage": "https://github.com/maioni/corona-mission#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "chromedriver": "^80.0.1",
-    "edgedriver": "^4.17134.1",
+    "chromedriver": "^80.0.2",
+    "edge": "^7.10.1",
     "geckodriver": "^1.19.1",
     "iedriver": "^3.14.2",
     "mocha": "^7.1.1",
