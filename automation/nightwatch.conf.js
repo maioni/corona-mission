@@ -8,7 +8,7 @@ module.exports = {
   src_folders: ["e2e-test-suite"],
 
   // See https://nightwatchjs.org/guide/working-with-page-objects/
-  page_objects_path: 'e2e-pages',
+  page_objects_path: 'e2e-page-objects',
 
   // See https://nightwatchjs.org/guide/extending-nightwatch/#writing-custom-commands
   custom_commands_path:  '',
