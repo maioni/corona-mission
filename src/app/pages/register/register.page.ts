@@ -31,12 +31,12 @@ export class RegisterPage implements OnInit {
 
     this.ionicForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-      age: ['', [Validators.required, Validators.minLength(1),Validators.maxLength(3)]],
+      age: ['', [Validators.required, Validators.pattern('[1-9]{1}[0-9]{0,2}')]],
       phone: ['', [Validators.required]],
       relationship: ['', Validators.required],
-    }), {
+    }, {
       validators: this.ageValidation.bind(this)
-      }
+    });
   }
 
   get errorControl() {
@@ -46,7 +46,6 @@ export class RegisterPage implements OnInit {
   async submitForm() {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
 
@@ -65,14 +64,18 @@ export class RegisterPage implements OnInit {
     this.newPerson.avatar = "../../assets/img/person_icon.png";
     this.newPerson.register_date = new Date((new Date().getTime() - (3*3600*1000))).toISOString();
 
-    const key = await this.database.createItem('/users/' + this.auth.getCurrentUserId() + '/contacts', this.newPerson);
+    const challengersDatabase = await this.database.readItemByKey('/challenges');
+    this.newPerson.challenges = challengersDatabase.val();
+    
+    const contactsPath = '/users/' + await this.auth.getCurrentUserId() + '/contacts';
+    const key = await this.database.createItem(contactsPath, this.newPerson);
+
 
     this.navCtrl.setDirection('forward');
     this.navCtrl.navigateForward('/home');
   }
 
   ageValidation(formGroup: FormGroup){
-    debugger     
     const { value: age } = formGroup.get('age');
     return age == 0 || age >= 130 ? {ageInvalid: true} : false;
   }
