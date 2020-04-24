@@ -3,16 +3,21 @@ import 'firebase/auth';
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { StorageService } from '../storage.service';
 
 @Injectable()
 export class AuthFirebaseService {
-    constructor(private nvc: NavController, private toastCtrl: ToastController,) { }
+    
+    constructor(private nvc: NavController, private toastCtrl: ToastController, private storage: StorageService) { 
+        firebase.auth().onAuthStateChanged(async (user) => {
+           await storage.setLoggedUser(user);
+        });
+    }
 
     async doLoginEmail(email, password) {
         return firebase.auth().signInWithEmailAndPassword(email, password).catch(async (error) => {
             var errorCode = error.code;
             var errorMessage = error.message; 
-            console.log(errorCode, errorMessage);
             const toast = await this.toastCtrl.create({
                 //TODO verificar se é quantidade de tentativas ou email/senha inválidos
                 message: 'Email ou senha inválidos.',
@@ -26,10 +31,8 @@ export class AuthFirebaseService {
 
     doSignOutEmail() {
         firebase.auth().signOut().then(() => {
-            console.log('signout successuful');
             this.nvc.navigateRoot('');
         }).catch(function (error) {
-            console.log('signout failed');
         });
     }
 
@@ -38,9 +41,7 @@ export class AuthFirebaseService {
         var response;
         user.sendEmailVerification().then(function () {
             response='';
-            console.log('Email sent.');
         }).catch(function (error) {
-            console.log('An error happened.');
             response='An error happened.';
         });
         return response;
@@ -52,9 +53,7 @@ export class AuthFirebaseService {
         var response;
         auth.sendPasswordResetEmail(emailAddress).then(function () {
             response='';
-            console.log('Email sent.');
         }).catch(function (error) {
-            console.log('An error happened.');
             response='An error happened.';
         });
         return response;
@@ -77,20 +76,24 @@ export class AuthFirebaseService {
                     err => {
                         reject(err);
                     }).catch(error => {
-                        console.log(error.code);
-                        console.log(error.message);
                         reject(error);
                     }
                     );
         })
     }
 
-    getCurrentUserId() {
+    async getCurrentUserId() {
 
-        if (firebase.auth() && firebase.auth().currentUser) {
+        const user = await this.storage.getLoggedUser();
 
-            return firebase.auth().currentUser.uid;
+        if (user) {
+
+            return user.uid;
         }
+    }
+
+    async isLogged () {
+        return Boolean(await this.storage.getLoggedUser());
     }
 
     sendPasswordResetEmail (email: string): Promise<any> {

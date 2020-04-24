@@ -11,7 +11,9 @@ import { AuthFirebaseService } from './services/firebase/firebase-auth.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  
   navigate : any;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -25,6 +27,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#00C0EE');
       this.splashScreen.hide();
     });
   }

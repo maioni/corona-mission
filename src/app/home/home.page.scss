@@ -19,15 +19,14 @@
 
 ion-content {
     text-align: center;
-    --overflow: hidden !important;
 }
-.scroll-y, .inner-scroll { display: none; }
 
 .info-text {
     padding-left: 15vw;
     padding-right: 15vw;
     font-size: 5vw;
     color: #E8E8E8;
+
 }
 
 .add-contact-text {
@@ -35,6 +34,7 @@ ion-content {
     font-size: 5vw;
     color: #E8E8E8;
     font-weight: 700;
+    margin-top: 5vh;
 }
 
 ion-avatar {
@@ -57,11 +57,13 @@ ion-chip {
     font-weight: 700;
     font-size: 3.6vw;
     color: var(--ion-text-color);
+    margin-left: 1vw;
 }
 
 .relationship {
     font-size: 3vw;
     color: var(--ion-text-color);
+    margin-left: 1vw;
 }
 
 ion-card {
@@ -82,7 +84,7 @@ ion-card {
         }
     }
     ion-fab{
-        padding-top: 6vh;
+        padding-top: 5vh;
         display: flex;
         width: 100%;
         flex-direction: row;
@@ -99,5 +101,5 @@ ion-card {
             height: 10vw !important;
         }
     }
-    
+
 }

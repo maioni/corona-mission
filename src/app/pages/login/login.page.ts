@@ -39,19 +39,17 @@ export class LoginPage implements OnInit {
     .then(this.goToHome.bind(this))
     .catch(error =>{
       this.loading.dismiss();
-      console.error(error)
       this.coronaToast.showError("Não foi possível fazer o login.");
     })
   }
 
   loginEmail() {
-    this.navCtrl.setDirection('forward');
-    this.navCtrl.navigateForward('/login/login-email');
+    this.navCtrl.navigateRoot('/login-email');
   }
 
   private goToHome(){
     this.loading.dismiss();
-    this.navCtrl.navigateForward('/home');
+    this.navCtrl.navigateRoot('/home');
   }
 
 }
